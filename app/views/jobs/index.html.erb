@@ -1,0 +1,8 @@
+<h2>Job listing</h2>
+<%= link_to "New", new_job_path() %> 
+<% @jobs.each do |job| %>
+  <div class="job">
+     <h1><%= link_to job.title, job %></h1>
+     <p><%= job.description %></p>
+  </div>
+<% end %>
