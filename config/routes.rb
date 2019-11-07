@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :jobs
 
   get '/job/:id/apply', to: 'jobs#apply', as: 'apply'
-  match '/job/:id/apply_to_job', to: 'jobs#apply_to_job', via: 'post'
 
   devise_for :employers, controllers: {sessions: "employer/sessions"}
   devise_for :candidates, controllers: {sessions: "candidate/sessions"}

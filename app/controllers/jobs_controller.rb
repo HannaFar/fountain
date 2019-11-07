@@ -41,11 +41,6 @@ class JobsController < ApplicationController
 
   def apply
     @job = find_job
-    # TODO : Add apply_to_job in apply and make it a simple apply button
-  end
-
-  def apply_to_job
-    @job = find_job
     if current_candidate
       if current_candidate.jobs.include?(@job)
         puts 'already applied'

@@ -1,8 +1,0 @@
-
-<h1>Apply to: <%= @job.title %></h1>
-
-<%= form_tag({controller: "jobs", action: "apply_to_job"}, method: "post") do %>
-    <%= label_tag(:name, "Name") %>
-    <%= text_field_tag(:name) %>
-    <%= submit_tag("Apply") %>
-<% end %>
