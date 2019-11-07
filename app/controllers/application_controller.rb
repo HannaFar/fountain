@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, notice: "You must login" unless (employer_signed_in? || candidate_signed_in?)
   end
 
+  def redirect_user
+    redirect_to jobs_path unless !(current_employer || current_candidate)
+  end
+
 end
