@@ -10,9 +10,6 @@ class JobsController < ApplicationController
   end
 
   def show
-    if current_candidate
-      @applied = current_candidate.jobs.include?(@job)
-    end
   end
 
   def new

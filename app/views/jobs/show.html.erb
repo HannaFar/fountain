@@ -4,7 +4,7 @@
     <p><%= @job.description %></p>
   </div>
 
-<% if  current_candidate && @applied%>
+<% if  current_candidate && current_candidate.applied?(@job)%>
   <div class="">
     You already applied to this Job
   </div>
@@ -12,11 +12,11 @@
 </div>
 
 
-<% if  current_employer%>
+<% if  current_employer && current_employer.has_job?(@job)%>
   <%= link_to "Edit", edit_job_path(@job) %>
   <%= link_to "Delete", @job, method: :delete, data: { confirm: "Are you sure?"} %>
 <% end %>
-<% if  current_candidate%>
-  <%= link_to "Apply", apply_path() %>
+<% if  current_candidate %>
+  <%= link_to "Apply", apply_path(), { class: "btn #{current_candidate.applied?(@job) ? 'btn-secondary disabled' : 'btn-primary'}"} %>
 <% end %>
 <%= link_to 'Back', jobs_path() %>
