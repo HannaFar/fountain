@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @applied = current_candidate.jobs.include?(@job)
   end
 
   def new
