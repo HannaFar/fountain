@@ -14,6 +14,9 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    if current_employer
+      @job.employer_id = current_employer.id
+    end
       if @job.save
         redirect_to @job
       else
@@ -32,9 +35,27 @@ class JobsController < ApplicationController
     end
   end
 
+  def apply
+    @job = find_job
+    # TODO : Add apply_to_job in apply and make it a simple apply button
+  end
+
+  def apply_to_job
+    @job = find_job
+    if current_candidate
+      if current_candidate.jobs.include?(@job)
+        puts 'already applied'
+        redirect_to job_path(@job)
+      else
+        current_candidate.jobs.push(@job)
+        redirect_to job_path(@job)
+      end
+    end
+  end
+
   def destroy
     @job.destroy
-    redirect_to 'index'
+    redirect_to jobs_path
   end
 
   private

@@ -1,5 +1,17 @@
+<% if current_employer %>
+  <%= link_to "Sign Out", destroy_employer_session_path, method: :delete %>
+<% end %>
+
+<% if current_candidate %>
+  <%= link_to "Sign Out", destroy_candidate_session_path, method: :delete %>
+<% end %>
+
+
 <h2>Job listing</h2>
-<%= link_to "New", new_job_path() %> 
+<% if current_employer %>
+  <%= link_to "New", new_job_path() %>
+<% end %>
+
 <% @jobs.each do |job| %>
   <div class="job">
      <h1><%= link_to job.title, job %></h1>

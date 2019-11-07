@@ -1,0 +1,10 @@
+<% if !current_employer && !current_candidate %>
+  <div class="main">
+    <div>
+      <%= link_to "Employer", new_employer_session_path %>
+    </div>
+    <div>
+      <%= link_to "Candidate", new_candidate_session_path %>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,10 @@
 <h1><%= @job.title %></h1>
 <p><%= @job.description %></p>
-<%= link_to "Edit", edit_job_path(@job) %>
-<%= link_to "Delete", @job, method: :delete, data: { confirm: "Are you sure?"} %>
+<% if  current_employer%>
+  <%= link_to "Edit", edit_job_path(@job) %>
+  <%= link_to "Delete", @job, method: :delete, data: { confirm: "Are you sure?"} %>
+<% end %>
+<% if  current_candidate%>
+  <%= link_to "Apply", apply_path() %>
+<% end %>
 <%= link_to 'Back', jobs_path() %>
