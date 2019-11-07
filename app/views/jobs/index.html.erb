@@ -8,13 +8,37 @@
 
 
 <h2>Job listing</h2>
-<% if current_employer %>
-  <%= link_to "New", new_job_path() %>
-<% end %>
+<div class="index d-flex justify-content-center">
 
-<% @jobs.each do |job| %>
-  <div class="job">
-     <h1><%= link_to job.title, job %></h1>
-     <p><%= job.description %></p>
+
+  <div class="jobs list-group w-50">
+    <% @jobs.each do |job| %>
+      <div class="job list-group-item">
+         <h1><%= link_to job.title, job %></h1>
+         <p><%= job.description %></p>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <% if current_employer %>
+    <div class="employer_menu w-50">
+
+      <%= link_to "Create job +", new_job_path(), {class: 'btn btn-primary'}%>
+        <div>
+          my jobs:
+          <ul id='employer_jobs' class="list-group">
+            <% @employer_jobs.each do |job| %>
+              <li class='employer_job list-group-item'>
+                <div data-toggle="collapse" href="#collapseExample-<%= job.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= job.id %>""><%= job.title %></div>
+                <div class="collapse multi-collapse" id="collapseExample-<%= job.id %>">
+                  <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  </div>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+  <% end %>
+
+</div>

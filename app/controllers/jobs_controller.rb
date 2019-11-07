@@ -3,10 +3,15 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
+    if current_employer
+      @employer_jobs = current_employer.jobs
+    end
   end
 
   def show
-    @applied = current_candidate.jobs.include?(@job)
+    if current_candidate
+      @applied = current_candidate.jobs.include?(@job)
+    end
   end
 
   def new
