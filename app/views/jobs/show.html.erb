@@ -1,6 +1,9 @@
 <div class="job">
   <div class="">
-    <h1><%= @job.title %></h1>
+    <div class="d-flex align-items-center">
+      <h1><%= @job.title %></h1>
+      <div class="font-italic small">posted by: <%= @job.employer_name %></div>
+    </div>
     <p><%= @job.description %></p>
   </div>
 

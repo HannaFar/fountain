@@ -9,3 +9,10 @@ class Employer < ApplicationRecord
     self.jobs.include?(job)
   end
 end
+
+class Employer::ParameterSanitizer < Devise::ParameterSanitizer
+  def initialize(*)
+    super
+    permit(:sign_up, keys: [:name])
+  end
+end
