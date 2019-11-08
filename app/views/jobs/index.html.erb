@@ -1,53 +1,48 @@
-<% if current_employer %>
-  <%= link_to "Sign Out", destroy_employer_session_path, method: :delete %>
-<% end %>
+<div class="m-5">
 
-<% if current_candidate %>
-  <%= link_to "Sign Out", destroy_candidate_session_path, method: :delete %>
-<% end %>
+  <h2 class="text-center ">Job listing</h2>
+
+  <div class="index d-flex justify-content-center">
 
 
-<h2>Job listing</h2>
-<div class="index d-flex justify-content-center">
-
-
-  <div class="jobs list-group w-75 mx-5 mt-5">
-    <% @jobs.each do |job| %>
-      <div class="job list-group-item">
-        <div class="d-flex justify-content-between">
-          <div><%= link_to job.title, job %></div>
-          <div class="font-italic small">posted by: <%= job.employer_name %></div>
-        </div>
-         <p><%= job.description %></p>
-      </div>
-    <% end %>
-  </div>
-  <% if current_employer %>
-    <div class="employer_menu w-25 mx-3 mt-5">
-
-      <%= link_to "Create job +", new_job_path(), {class: 'btn btn-primary'}%>
-        <div>
-          my jobs:
-          <ul id='employer_jobs' class="list-group">
-            <% @employer_jobs.each do |job| %>
-              <li class='employer_job list-group-item'>
-                <div class=" d-flex justify-content-between" data-toggle="collapse" href="#collapseExample-<%= job.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= job.id %>">
-                  <div class="btn btn-link"><%= job.title %></div>
-                  <div class="small"">
-                    <%= link_to "Edit", edit_job_path(job) %>
-                    <%= link_to "Delete", job, method: :delete, data: { confirm: "Are you sure?"} %>
-                  </div>
-                </div>
-                <div class="collapse multi-collapse" id="collapseExample-<%= job.id %>">
-                  <div class="card card-body">
-                      Candidates names : <%= job.candidates.map(&:name) %>
-                  </div>
-                </div>
-              </li>
-              <% end %>
-            </ul>
+    <div class="jobs list-group w-75 mx-5 mt-5">
+      <% @jobs.each do |job| %>
+        <div class="job list-group-item">
+          <div class="d-flex justify-content-between">
+            <div><%= link_to job.title, job %></div>
+            <div class="font-italic small">posted by: <%= job.employer_name %></div>
           </div>
+           <p><%= job.description %></p>
         </div>
-  <% end %>
+      <% end %>
+    </div>
+    <% if current_employer %>
+      <div class="employer_menu w-25 mx-3 mt-5">
 
+        <%= link_to "Create job +", new_job_path(), {class: 'btn btn-primary'}%>
+          <div>
+            my jobs:
+            <ul id='employer_jobs' class="list-group">
+              <% @employer_jobs.each do |job| %>
+                <li class='employer_job list-group-item'>
+                  <div class=" d-flex justify-content-between" data-toggle="collapse" href="#collapseExample-<%= job.id %>" role="button" aria-expanded="false" aria-controls="collapseExample-<%= job.id %>">
+                    <div class="btn btn-link"><%= job.title %></div>
+                    <div class="small"">
+                      <%= link_to "Edit", edit_job_path(job) %>
+                      <%= link_to "Delete", job, method: :delete, data: { confirm: "Are you sure?"} %>
+                    </div>
+                  </div>
+                  <div class="collapse multi-collapse" id="collapseExample-<%= job.id %>">
+                    <div class="card card-body">
+                        Candidates names : <%= job.candidates.map(&:name) %>
+                    </div>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+    <% end %>
+
+  </div>
 </div>

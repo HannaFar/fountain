@@ -1,0 +1,22 @@
+<div class="menu d-flex justify-content-end align-items-center p-5">
+
+  <% if current_employer %>
+  <div class="mx-5">
+    <%= current_employer.name %>
+  </div>
+  <div class="mx-5">
+    <%= current_employer.email %>
+  </div>
+    <%= link_to "Sign Out", destroy_employer_session_path, method: :delete, class: 'btn btn-primary' %>
+  <% end %>
+
+  <% if current_candidate %>
+  <div class="mx-5">
+    <%= current_candidate.name %>
+  </div>
+  <div class="mx-5">
+    <%= current_candidate.email %>
+  </div>
+    <%= link_to "Sign Out", destroy_candidate_session_path, method: :delete, class: 'btn btn-primary' %>
+  <% end %>
+</div>

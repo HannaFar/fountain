@@ -1,10 +1,13 @@
 <% if !current_employer && !current_candidate %>
-  <div class="main">
-    <div>
-      <%= link_to "Employer", new_employer_session_path %>
+  <div class="main d-flex flex-column align-items-center justify-content-center bg-primary">
+    <div class="border rounded user-choice d-flex flex-column align-items-center justify-content-center bg-light">
+      <div class="">
+        <%= link_to "Employer", new_employer_session_path, class: 'btn btn-lg btn-primary user-type m-3'  %>
+      </div>
+      <div>
+        <%= link_to "Candidate", new_candidate_session_path, class: 'btn btn-lg btn-primary user-type m-3' %>
+      </div>
     </div>
-    <div>
-      <%= link_to "Candidate", new_candidate_session_path %>
-    </div>
+
   </div>
 <% end %>

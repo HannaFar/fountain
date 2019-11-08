@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <%- flash.each do |name, msg| -%>
+      <% if msg.is_a?(String) %>
+        <% if name == 'alert' %>
+          <div class="alert alert-danger mb-0"><%= msg  %></div>
+        <% else %>
+          <div class="alert alert-success mb-o"><%= msg  %></div>
+        <% end %>
+      <% end %>
+      <% if current_employer || current_candidate %>
+        <%= render "shared/menu" %>
+      <% end %>
+    <%- end %>
     <%= yield %>
   </body>
 </html>

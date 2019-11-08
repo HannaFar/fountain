@@ -1,19 +1,17 @@
-<div class="job">
-  <div class="">
-    <div class="d-flex align-items-center">
+<div class="job card">
+  <div class="card-body">
+    <div class="card-title">
       <h1><%= @job.title %></h1>
-      <div class="font-italic small">posted by: <%= @job.employer_name %></div>
+      <div class="card-subtitle">posted by: <%= @job.employer_name %></div>
     </div>
-    <p><%= @job.description %></p>
+    <div class="card-text"><%= @job.description %></div>
+    <% if  current_candidate && current_candidate.applied?(@job)%>
+      <div class="">
+        You already applied to this Job
+      </div>
+    <% end %>
   </div>
-
-<% if  current_candidate && current_candidate.applied?(@job)%>
-  <div class="">
-    You already applied to this Job
-  </div>
-<% end %>
 </div>
-
 
 <% if  current_employer && current_employer.has_job?(@job)%>
   <%= link_to "Edit", edit_job_path(@job) %>
