@@ -26,6 +26,14 @@ $ rake db:migrate
 ```
 username: `hanna`
 password: `hanna`
+
+#####  Rails server
+
+```sh
+$ rails s
+```
+
+
 ### Deployment
 
 In order to deploy the application I used:
