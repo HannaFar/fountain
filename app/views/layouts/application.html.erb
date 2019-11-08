@@ -15,13 +15,14 @@
         <% if name == 'alert' %>
           <div class="alert alert-danger mb-0"><%= msg  %></div>
         <% else %>
-          <div class="alert alert-success mb-o"><%= msg  %></div>
+          <div class="alert alert-success mb-0"><%= msg  %></div>
         <% end %>
       <% end %>
-      <% if current_employer || current_candidate %>
-        <%= render "shared/menu" %>
-      <% end %>
     <%- end %>
+
+    <% if current_employer || current_candidate %>
+      <%= render "shared/menu" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

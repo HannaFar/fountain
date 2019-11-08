@@ -24,7 +24,7 @@ class JobsController < ApplicationController
       if @job.save
         redirect_to @job
       else
-        render ‘new’
+        redirect_to new_job_url
       end
   end
 
@@ -35,7 +35,7 @@ class JobsController < ApplicationController
     if @job.update(job_params)
       redirect_to @job
     else
-      render ‘edit’
+      render :edit
     end
   end
 
